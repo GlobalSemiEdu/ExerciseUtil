@@ -19,12 +19,8 @@ class WaveformLogger:
             self.log[sig] = ["", []]
             self.prev[sig] = None
 
-        self.cycle = 0
-
     def record(self, current_signals):
-        clk = "P" if self.cycle % 2 == 0 else "."
-        self.log[self.clk_sig] += str(clk)
-        self.cycle += 1
+        self.log[self.clk_sig] += "P"
 
         for sig in self.ctrl_sigs:
             if self.prev[sig] == current_signals[sig]:
